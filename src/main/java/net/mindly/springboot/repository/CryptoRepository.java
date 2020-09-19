@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import net.mindly.springboot.model.Crypto;
 
 @Repository
-public interface CryptoRepository extends JpaRepository< Crypto, Long> {
+public interface CryptoRepository extends JpaRepository<Crypto, Long> {
 
 }

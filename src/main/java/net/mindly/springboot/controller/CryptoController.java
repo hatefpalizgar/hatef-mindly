@@ -19,39 +19,33 @@ import net.mindly.springboot.exception.ResourceNotFoundException;
 import net.mindly.springboot.model.Crypto;
 import net.mindly.springboot.repository.CryptoRepository;
 
-@CrossOrigin(origins="https://alaz7622356694.github.io")
+@CrossOrigin(origins = "https://alaz7622356694.github.io")
 @RestController
 @RequestMapping("/api/")
 public class CryptoController {
-	
+
 	@Autowired
 	private CryptoRepository cryptoRepository;
-	
-    @GetMapping("/crypto")	
-    public List<Crypto> getAllCrypto(){
-	 return cryptoRepository.findAll();
-}
-    @PostMapping("/crypto")
-    public Crypto AddCrypto ( @RequestBody Crypto crypto){
-	 return cryptoRepository.save(crypto);}
-    
-  
-   @DeleteMapping("/crypto/{id}")
-   public ResponseEntity < Map<String, Boolean>> deleteCrypto(@PathVariable Long id){
-	   Crypto crypto=cryptoRepository.findById(id).orElseThrow(() -> 
-       new ResourceNotFoundException("Crypto not exist with id :" + id));
-	   
-	   cryptoRepository.delete(crypto);
-	   Map<String,Boolean> response = new HashMap<>();
-	   response.put("deleted",Boolean.TRUE);
-	   return ResponseEntity.ok(response);
-   }
-    
-}
-	 
-	
-	 
-	 
-	 
 
+	@GetMapping("/crypto")
+	public List<Crypto> getAllCrypto() {
+		return cryptoRepository.findAll();
+	}
 
+	@PostMapping("/crypto")
+	public Crypto addCrypto(@RequestBody Crypto crypto) {
+		return cryptoRepository.save(crypto);
+	}
+
+	@DeleteMapping("/crypto/{id}")
+	public ResponseEntity<Map<String, Boolean>> deleteCrypto(@PathVariable Long id) {
+		Crypto crypto = cryptoRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Crypto not exist with id :" + id));
+
+		cryptoRepository.delete(crypto);
+		Map<String, Boolean> response = new HashMap<>();
+		response.put("deleted", Boolean.TRUE);
+		return ResponseEntity.ok(response);
+	}
+
+}
