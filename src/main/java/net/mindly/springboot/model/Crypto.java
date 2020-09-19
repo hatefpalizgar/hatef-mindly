@@ -9,17 +9,20 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "Crypto")
-
 public class Crypto {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -35,5 +38,16 @@ public class Crypto {
 	private BigDecimal currentMarketValue;
 	@Column(name = "Option")
 	private String option;
+	
+	public Crypto(String cryptocurrency, BigDecimal amount, String dateOfPurchase, String walletLocation,
+			BigDecimal currentMarketValue, String option) {
+			super();
+			this.cryptocurrency = cryptocurrency;
+			this.amount = amount;
+			this.dateOfPurchase = dateOfPurchase;
+			this.walletLocation = walletLocation;
+			this.currentMarketValue = currentMarketValue;
+			this.option = option;
+			}
 
 }
