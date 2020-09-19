@@ -19,7 +19,7 @@ import net.mindly.springboot.exception.ResourceNotFoundException;
 import net.mindly.springboot.model.Crypto;
 import net.mindly.springboot.repository.CryptoRepository;
 
-@CrossOrigin(origins="https://alaz7622356694.github.io/**")
+@CrossOrigin(origins="https://alaz7622356694.github.io")
 @RestController
 @RequestMapping("/api/")
 public class CryptoController {
